@@ -24,7 +24,7 @@ public class UserServiceImpl implements UserService {
   }
 
   @Override
-  public RemoteResult<Long> deleteByUserId(Long userId) {
+  public RemoteResult<Boolean> deleteByUserId(Long userId) {
     return null;
   }
 
