@@ -2,8 +2,12 @@ package cn.edu.nefu.embedded.user.impl;
 
 import cn.edu.nefu.embedded.user.api.UserService;
 import cn.edu.nefu.embedded.user.common.RemoteResult;
+import cn.edu.nefu.embedded.user.dal.UserMapper;
+import cn.edu.nefu.embedded.user.domain.entity.UserInfo;
 import cn.edu.nefu.embedded.user.dto.UserDto;
+import cn.edu.nefu.embedded.user.util.DtoUtil;
 import java.util.List;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 /**
@@ -12,10 +16,23 @@ import org.springframework.stereotype.Service;
  */
 @Service
 public class UserServiceImpl implements UserService {
+  @Autowired
+  private UserMapper userMapper;
 
   @Override
   public RemoteResult<Long> insert(UserDto userDto) {
-    return null;
+    if(userDto == null){
+      return new RemoteResult<Long>().error("1002", "参数为空");
+    }
+    UserInfo userInfo = DtoUtil.change(userDto, UserInfo.class);
+    if(userInfo == null){
+      return new RemoteResult<Long>().error("4004", "服务异常");
+    }
+    long count = userMapper.insert(userInfo);
+    if(count == 1 && userInfo.getUserId() != null){
+      return new RemoteResult<Long>().succes(userInfo.getUserId());
+    }
+    return new RemoteResult<Long>().error("4004", "服务异常");
   }
 
   @Override

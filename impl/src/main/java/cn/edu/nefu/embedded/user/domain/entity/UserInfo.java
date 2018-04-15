@@ -21,6 +21,14 @@ public class UserInfo {
    */
   private String nickName;
   /**
+   * 头像
+   */
+  private String avatar;
+  /**
+   * 签名
+   */
+  private String signature;
+  /**
    * 学号
    */
   private String studentId;
