@@ -8,7 +8,7 @@
                       classLevel, sex, phone, email, weChat, qq, isDeleted, updated, created</sql>
 
   <insert id="insert" keyProperty="userId" useGeneratedKeys="true"
-    parameterType="cn.edu.nefu.embedded.user.domain.entity.UserInfo">
+    parameterType="UserInfo">
     INSERT INTO `User`
     <trim prefix="(" suffix=")">
       <if test="userName != null">
@@ -115,7 +115,7 @@
     </trim>
   </insert>
 
-  <update id="update" parameterType="cn.edu.nefu.embedded.user.domain.entity.UserInfo">
+  <update id="update" parameterType="UserInfo">
     UPDATE `UserInfo`
     <set>
       <if test="userName != null">
@@ -176,14 +176,14 @@
     LIMIT 1
   </update>
 
-  <select id="queryByUserId" parameterType="java.lang.Long" resultType="cn.edu.nefu.embedded.user.domain.entity.UserInfo">
+  <select id="queryByUserId" parameterType="java.lang.Long" resultType="UserInfo">
     SELECT <include refid="BaseColumns"/>
     FROM `UserInfo`
     WHERE userId=#{userId} AND isDeleted=0
     LIMIT 1
   </select>
 
-  <select id="queryByUserIds" parameterType="java.util.List" resultType="cn.edu.nefu.embedded.user.domain.entity.UserInfo">
+  <select id="queryByUserIds" parameterType="java.util.List" resultType="UserInfo">
     SELECT <include refid="BaseColumns"/>
     FROM `UserInfo`
     WHERE userId in
@@ -196,28 +196,28 @@
     LIMIT 500
   </select>
 
-  <select id="queryByEmail" parameterType="java.lang.String" resultType="cn.edu.nefu.embedded.user.domain.entity.UserInfo">
+  <select id="queryByEmail" parameterType="java.lang.String" resultType="UserInfo">
     SELECT <include refid="BaseColumns"/>
     FROM `UserInfo`
     WHERE email=#{email} AND isDeleted=0
     LIMIT 1
   </select>
 
-  <select id="queryByPhone" parameterType="java.lang.String" resultType="cn.edu.nefu.embedded.user.domain.entity.UserInfo">
+  <select id="queryByPhone" parameterType="java.lang.String" resultType="UserInfo">
     SELECT <include refid="BaseColumns"/>
     FROM `UserInfo`
     WHERE phone=#{phone} AND isDeleted=0
     LIMIT 1
   </select>
 
-  <select id="queryByStudentId" parameterType="java.lang.String" resultType="cn.edu.nefu.embedded.user.domain.entity.UserInfo">
+  <select id="queryByStudentId" parameterType="java.lang.String" resultType="UserInfo">
     SELECT <include refid="BaseColumns"/>
     FROM `UserInfo`
     WHERE studentId=#{studentId} AND isDeleted=0
     LIMIT 1
   </select>
 
-  <select id="queryByNickName" parameterType="java.lang.String" resultType="cn.edu.nefu.embedded.user.domain.entity.UserInfo">
+  <select id="queryByNickName" parameterType="java.lang.String" resultType="UserInfo">
     SELECT <include refid="BaseColumns"/>
     FROM `UserInfo`
     WHERE nickName=#{nickName} AND isDeleted=0
