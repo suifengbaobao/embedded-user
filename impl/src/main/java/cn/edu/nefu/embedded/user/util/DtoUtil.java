@@ -37,7 +37,7 @@ public class DtoUtil {
    * @param <T>   目标对象类型
    * @return 目标对象集合
    */
-  public static <T> List<T> changeList(List<Object> objs, Class<T> clazz){
+  public static <T> List<T> changeList(List<? extends Object> objs, Class<T> clazz){
     List<T> list = new ArrayList<>();
     if(CollectionUtils.isEmpty(objs)){
       return list;

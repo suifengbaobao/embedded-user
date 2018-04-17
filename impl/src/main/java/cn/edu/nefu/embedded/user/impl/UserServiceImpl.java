@@ -7,11 +7,14 @@ import cn.edu.nefu.embedded.user.domain.entity.UserInfo;
 import cn.edu.nefu.embedded.user.dto.UserDto;
 import cn.edu.nefu.embedded.user.util.DtoUtil;
 import java.util.List;
+import org.apache.commons.collections4.CollectionUtils;
+import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 /**
- * 用户服务实现 created by banshui on 18/04/14
+ * 用户服务实现
+ * created by banshui on 18/04/14
  */
 @Service
 public class UserServiceImpl implements UserService {
@@ -27,7 +30,7 @@ public class UserServiceImpl implements UserService {
     UserInfo userInfo = DtoUtil.change(userDto, UserInfo.class);
     long count = userMapper.insert(userInfo);
     if (count == 1 && userInfo != null && userInfo.getUserId() != null) {
-      return new RemoteResult<Long>().succes(userInfo.getUserId());
+      return new RemoteResult<Long>().success(userInfo.getUserId());
     }
     return new RemoteResult<Long>().error("4004", "服务异常");
   }
@@ -40,7 +43,7 @@ public class UserServiceImpl implements UserService {
     UserInfo userInfo = DtoUtil.change(userDto, UserInfo.class);
     long count = userMapper.update(userInfo);
     if (count == 1) {
-      return new RemoteResult<Boolean>().succes(Boolean.TRUE);
+      return new RemoteResult<Boolean>().success(Boolean.TRUE);
     } else {
       return new RemoteResult<Boolean>().error("4004", "更新失败");
     }
@@ -53,7 +56,7 @@ public class UserServiceImpl implements UserService {
     }
     long count = userMapper.deleteByUserId(userId);
     if (count == 1) {
-      return new RemoteResult<Boolean>().succes(Boolean.TRUE);
+      return new RemoteResult<Boolean>().success(Boolean.TRUE);
     } else {
       return new RemoteResult<Boolean>().error("4004", "删除失败");
     }
@@ -61,31 +64,55 @@ public class UserServiceImpl implements UserService {
 
   @Override
   public RemoteResult<UserDto> queryByUserId(Long userId) {
-    return null;
+    if (userId == null) {
+      return new RemoteResult<UserDto>().error("1002", "参数为空");
+    }
+    UserInfo userInfo = userMapper.queryByUserId(userId);
+    return new RemoteResult<UserDto>().success(DtoUtil.change(userInfo, UserDto.class));
   }
 
   @Override
   public RemoteResult<List<UserDto>> queryByUserIds(List<Long> userIds) {
-    return null;
+    if(CollectionUtils.isEmpty(userIds)){
+      return new RemoteResult<List<UserDto>>().error("1002", "参数为空");
+    }
+    List<UserInfo> userInfos = userMapper.queryByUserIds(userIds);
+    return new RemoteResult<List<UserDto>>().success(DtoUtil.changeList(userInfos, UserDto.class));
   }
 
   @Override
   public RemoteResult<UserDto> queryByEmail(String email) {
-    return null;
+    if(StringUtils.isBlank(email)){
+      return new RemoteResult<UserDto>().error("1002", "参数为空");
+    }
+    UserInfo userInfo = userMapper.queryByEmail(email);
+    return new RemoteResult<UserDto>().success(DtoUtil.change(userInfo, UserDto.class));
   }
 
   @Override
   public RemoteResult<UserDto> queryByPhone(String phone) {
-    return null;
+    if(StringUtils.isBlank(phone)){
+      return new RemoteResult<UserDto>().error("1002", "参数为空");
+    }
+    UserInfo userInfo = userMapper.queryByEmail(phone);
+    return new RemoteResult<UserDto>().success(DtoUtil.change(userInfo, UserDto.class));
   }
 
   @Override
   public RemoteResult<UserDto> queryByStudentId(String studentId) {
-    return null;
+    if(StringUtils.isBlank(studentId)){
+      return new RemoteResult<UserDto>().error("1002", "参数为空");
+    }
+    UserInfo userInfo = userMapper.queryByEmail(studentId);
+    return new RemoteResult<UserDto>().success(DtoUtil.change(userInfo, UserDto.class));
   }
 
   @Override
   public RemoteResult<UserDto> queryByNickName(String nickName) {
-    return null;
+    if(StringUtils.isBlank(nickName)){
+      return new RemoteResult<UserDto>().error("1002", "参数为空");
+    }
+    UserInfo userInfo = userMapper.queryByEmail(nickName);
+    return new RemoteResult<UserDto>().success(DtoUtil.change(userInfo, UserDto.class));
   }
 }

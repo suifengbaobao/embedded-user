@@ -23,7 +23,7 @@ public class RemoteResult<T> {
    */
   private String msg;
 
-  public RemoteResult<T> succes(T value){
+  public RemoteResult<T> success(T value){
     this.value = value;
     this.success = true;
     this.code = "1001";
