@@ -3,10 +3,12 @@ package cn.edu.nefu.embedded.user.dal;
 import cn.edu.nefu.embedded.user.domain.entity.UserInfo;
 import java.util.List;
 import org.apache.ibatis.annotations.Param;
+import org.springframework.stereotype.Repository;
 
 /**
  * 用户映射类 created by banshui on 2018/4/14
  */
+@Repository
 public interface UserMapper {
 
   long insert(UserInfo userInfo);
