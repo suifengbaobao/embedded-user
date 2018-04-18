@@ -94,7 +94,7 @@ public class UserServiceImpl implements UserService {
     if(StringUtils.isBlank(phone)){
       return new RemoteResult<UserDto>().error("1002", "参数为空");
     }
-    UserInfo userInfo = userMapper.queryByEmail(phone);
+    UserInfo userInfo = userMapper.queryByPhone(phone);
     return new RemoteResult<UserDto>().success(DtoUtil.change(userInfo, UserDto.class));
   }
 
@@ -103,7 +103,7 @@ public class UserServiceImpl implements UserService {
     if(StringUtils.isBlank(studentId)){
       return new RemoteResult<UserDto>().error("1002", "参数为空");
     }
-    UserInfo userInfo = userMapper.queryByEmail(studentId);
+    UserInfo userInfo = userMapper.queryByStudentId(studentId);
     return new RemoteResult<UserDto>().success(DtoUtil.change(userInfo, UserDto.class));
   }
 
@@ -112,7 +112,7 @@ public class UserServiceImpl implements UserService {
     if(StringUtils.isBlank(nickName)){
       return new RemoteResult<UserDto>().error("1002", "参数为空");
     }
-    UserInfo userInfo = userMapper.queryByEmail(nickName);
+    UserInfo userInfo = userMapper.queryByNickName(nickName);
     return new RemoteResult<UserDto>().success(DtoUtil.change(userInfo, UserDto.class));
   }
 }

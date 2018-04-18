@@ -13,6 +13,10 @@ public class UserDto {
    */
   private Long userId;
   /**
+   * 全局通用唯一识别码
+   */
+  private String uuid;
+  /**
    * 用户名（真名）
    */
   private String userName;
@@ -39,7 +43,7 @@ public class UserDto {
   /**
    * 出生日期
    */
-  private String birthday;
+  private Long birthday;
   /**
    * 学院
    */
@@ -51,7 +55,7 @@ public class UserDto {
   /**
    * 班级
    */
-  private String classLevel;
+  private Integer classLevel;
   /**
    * 性别 0-未知 1-男性 2-女性 3-中性
    */
