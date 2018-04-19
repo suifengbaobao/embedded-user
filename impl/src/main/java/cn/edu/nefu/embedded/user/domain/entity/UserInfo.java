@@ -80,6 +80,10 @@ public class UserInfo {
    * false-未删除 true-删除
    */
   private Boolean isDeleted;
+  /**
+   * 保留字段
+   */
+  private String extraInfo;
   private Long updated;
   private Long created;
 }

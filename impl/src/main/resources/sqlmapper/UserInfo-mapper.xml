@@ -5,7 +5,7 @@
 <mapper namespace="cn.edu.nefu.embedded.user.dal.UserMapper">
 
   <sql id="BaseColumns">userId, uuid, userName, nickName, avatar, signature, studentId, password, birthday, college, subject,
-                      classLevel, sex, phone, email, weChat, qq, isDeleted, updated, created</sql>
+                      classLevel, sex, phone, email, weChat, qq, isDeleted, extraInfo, updated, created</sql>
 
   <insert id="insert" keyProperty="userId" useGeneratedKeys="true"
     parameterType="UserInfo">
@@ -62,6 +62,9 @@
       <if test="isDeleted != null">
         ,isDeleted
       </if>
+      <if test="extraInfo != null">
+        ,extraInfo
+      </if>
       ,created,updated
     </trim>
     VALUES
@@ -117,6 +120,9 @@
       <if test="isDeleted != null">
         ,#{isDeleted}
       </if>
+      <if test="extraInfo != null">
+        ,#{extraInfo}
+      </if>
       ,UNIX_TIMESTAMP(),UNIX_TIMESTAMP()
     </trim>
   </insert>
@@ -168,6 +174,9 @@
       </if>
       <if test="qq != null">
         ,qq=#{qq}
+      </if>
+      <if test="extraInfo != null">
+        ,extraInfo=#{extraInfo}
       </if>
       ,updated=UNIX_TIMESTAMP()
     </set>
