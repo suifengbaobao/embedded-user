@@ -11,15 +11,73 @@ import lombok.Data;
 public class RedisLoginInfo implements Serializable {
 
   /**
-   * 用户id
+   * 用户唯一标识
    */
   private Long userId;
   /**
-   * 生成的token
+   * 全局通用唯一识别码
    */
-  private String token;
+  private String uuid;
   /**
-   * 登录或者刷新应用的时间
+   * 用户名（真名）
    */
-  private Long refTime;
+  private String userName;
+  /**
+   * 昵称
+   */
+  private String nickName;
+  /**
+   * 头像
+   */
+  private String avatar;
+  /**
+   * 签名
+   */
+  private String signature;
+  /**
+   * 学号
+   */
+  private String studentId;
+  /**
+   * 出生日期
+   */
+  private Long birthday;
+  /**
+   * 学院
+   */
+  private String college;
+  /**
+   * 专业
+   */
+  private String subject;
+  /**
+   * 班级
+   */
+  private Integer classLevel;
+  /**
+   * 性别 0-未知 1-男性 2-女性
+   */
+  private Integer sex;
+  /**
+   * 电话号码
+   */
+  private String phone;
+  /**
+   * 邮箱
+   */
+  private String email;
+  /**
+   * 微信号
+   */
+  private String weChat;
+  /**
+   * QQ号
+   */
+  private String qq;
+  /**
+   * 保留字段
+   */
+  private String extraInfo;
+  private Long updated;
+  private Long created;
 }

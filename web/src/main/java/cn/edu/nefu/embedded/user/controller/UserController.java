@@ -30,7 +30,6 @@ public class UserController {
     if (userInfo == null){
       return new ResponseResult().error("1002", "参数异常");
     }
-
     return null;
   }
 

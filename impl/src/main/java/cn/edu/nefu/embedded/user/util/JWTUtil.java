@@ -19,7 +19,7 @@ import java.util.Map;
 public class JWTUtil {
 
   // 密钥
-  private final static String SECRET = "123456";
+  private final static String SECRET = "NVkySzVyQzA1ckM0NkwrYzU0aXg2Ym1GNWEyUWZnPT0=";
   // Json序列化对象
   private static ObjectMapper mapper = new ObjectMapper();
 
