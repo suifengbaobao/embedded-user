@@ -27,8 +27,8 @@ public class MessageServiceImpl implements MessageService {
   private static final int EXPIRE_TIME = 60 * 5;   // 5分钟有效时间
   private static final String product = "Dysmsapi";// 短信API产品名称（短信产品名固定，无需修改）
   private static final String domain = "dysmsapi.aliyuncs.com";// 短信API产品域名（接口地址固定，无需修改）
-  private static final String accessKeyId = "LTAIbh3IYkUkAsD9";// 你的accessKeyId,参考本文档步骤2
-  private static final String accessKeySecret = "wg8ch2MYoOwr5aMAYmRNfIOzp5LGhm";// 你的accessKeySecret
+  private static final String accessKeyId = "****";// 你的accessKeyId,参考本文档步骤2
+  private static final String accessKeySecret = "****";// 你的accessKeySecret
 
   @Autowired
   public MessageServiceImpl(CacheService cacheService) {
@@ -58,7 +58,7 @@ public class MessageServiceImpl implements MessageService {
       //必填:待发送手机号。支持以逗号分隔的形式进行批量调用，批量上限为1000个手机号码,批量调用相对于单条调用及时性稍有延迟,验证码类型的短信推荐使用单条调用的方式；发送国际/港澳台消息时，接收号码格式为00+国际区号+号码，如“0085200000000”
       request.setPhoneNumbers(phone);
       //必填:短信签名-可在短信控制台中找到
-      request.setSignName("NEFU注册验证");
+      request.setSignName("Embedded实验室");
       //必填:短信模板-可在短信控制台中找到
       request.setTemplateCode("SMS_134220008");
       //可选:模板中的变量替换JSON串,如模板内容为"亲爱的${name},您的验证码为${code}"时,此处的值为
