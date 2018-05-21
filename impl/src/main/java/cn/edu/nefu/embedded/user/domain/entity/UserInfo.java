@@ -1,5 +1,6 @@
 package cn.edu.nefu.embedded.user.domain.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Data;
 
 /**
@@ -39,6 +40,7 @@ public class UserInfo {
   /**
    * 密码
    */
+  @JsonIgnore
   private String password;
   /**
    * 出生日期

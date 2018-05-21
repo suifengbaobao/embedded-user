@@ -14,4 +14,11 @@ public interface MessageService {
    * @return true-发送成功，false-发送失败
    */
   RemoteResult<Boolean> sendRegisterMsg(String phone);
+
+  /**
+   * 发送手机号验证码
+   * @param phone 电话号码
+   * @return true-发送成功，false-发送失败
+   */
+  RemoteResult<Boolean> sendPhoneVerify(String phone);
 }

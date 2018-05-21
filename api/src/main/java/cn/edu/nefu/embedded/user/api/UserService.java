@@ -72,4 +72,18 @@ public interface UserService {
    * @return 用户信息
    */
   RemoteResult<UserDto> queryByNickName(String nickName);
+
+  /**
+   * 根据token获取用户信息
+   * @param token token
+   * @return 用户信息
+   */
+  RemoteResult<UserDto> queryUserByToken(String token);
+
+  /**
+   * 退出登录
+   * @param token token
+   * @return 结果
+   */
+  RemoteResult<Boolean> logout(String token);
 }

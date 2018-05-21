@@ -38,7 +38,7 @@ public class CacheService {
    * @param value  值
    * @param expire 失效时间，秒
    */
-  public void setEx(String key, Object value, int expire){
+  public void setEx(String key, Object value, long expire){
     redisTemplate.opsForValue().set(key, value, expire, TimeUnit.SECONDS);
   }
 
@@ -48,5 +48,15 @@ public class CacheService {
    */
   public void del(String key){
     redisTemplate.delete(key);
+  }
+
+  /**
+   * 更新一个键的失效时间
+   * @param key    键
+   * @param expire 失效时间秒
+   * @return 响应结果
+   */
+  public Boolean expire(String key, long expire){
+    return redisTemplate.expire(key,expire, TimeUnit.SECONDS);
   }
 }
