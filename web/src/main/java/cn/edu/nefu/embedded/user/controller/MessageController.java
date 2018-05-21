@@ -71,7 +71,7 @@ public class MessageController {
     }
     // 开始发送验证码服务
     try {
-      RemoteResult<Boolean> result = messageService.sendRegisterMsg(phone);
+      RemoteResult<Boolean> result = messageService.sendPhoneVerify(phone);
       if (result.isSuccess() && result.getValue()) {
         return new ResponseResult().success(result.getValue());
       }
